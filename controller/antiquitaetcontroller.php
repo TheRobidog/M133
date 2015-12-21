@@ -17,7 +17,7 @@
 					$anti->id = $artarray['0'];
 					$anti->name = $artarray['1'];
 					$anti->description = $artarray['2'];
-					$catcontrol = new Kategoriecontroller();
+					$catcontrol = new KategorieController();
 					$anti->kategorie = $catcontrol->GetById($artarray['3']);
 					$anti->price = $artarray['4'];
 				}
@@ -33,12 +33,12 @@
 				$artarray = explode(':',$article);
 				if(isset($cat)){
 					if($cat == $artarray['3']){
-						$catcontrol = new Kategoriecontroller();
+						$catcontrol = new KategorieController();
 						$anti = new Antiquitaet($artarray['0'],$artarray['1'],$artarray['2'],$catcontrol->GetById($artarray['3']),$artarray['4']);
 						$antilist[] = $anti;
 					}
 				}else{
-					$catcontrol = new Kategoriecontroller();
+					$catcontrol = new KategorieController();
 					$anti = new Antiquitaet($artarray['0'],$artarray['1'],$artarray['2'],$catcontrol->GetById($artarray['3']),$artarray['4']);
 					$antilist[] = $anti;
 				}

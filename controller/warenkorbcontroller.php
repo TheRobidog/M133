@@ -1,7 +1,7 @@
 <?php
 	include_once('model/warenkorb.php');
 	include_once('controller/antiquitaetcontroller.php');
-	include_once('controller/account.php');
+	include_once('controller/accountcontroller.php');
 
 	class WarenkorbController{
 		public function __construct(){
@@ -16,7 +16,7 @@
 				$cartarray = explode(':',$safedcart);
 				if($id == $cartarray['0']){
 					$cart->id = $cartarray['0'];
-					$anti = new Antiquitaet();
+					$anti = new AntiquitaetController();
 					/*foreach($cartarray['1'] as $antiid){
 						$newanti = $anti->ShowOne($antiid);
 						$cart->antiquitaet[] = $newanti;
@@ -28,8 +28,8 @@
 						$cart->antiquitaet[] = $newanti;
 					}
 					$cart->price = $cartarray['2'];
-					$acc = new Account();
-					$cart->account = $acc->GetById($cartarray['3']);
+					$acc = new AccountController();
+					$cart->account = $acc->LoadAcc($cartarray['3']);
 				}
 			}
 			return $cart;
@@ -39,7 +39,8 @@
 			if(!isset($id)){
 				$safedcarts = file('carts.php');
 				$lastentry = end($safedcarts);
-				$id = $lastentry['0'] + 1;
+				$lastarray = explode(':',$lastentry)
+				$id = $lastarray['0'] + 1;
 			}
 			$antistring;
 			foreach($anti as $ant){
@@ -51,7 +52,8 @@
 				}
 			}
 			$accid = $acc->id
-			file_put_contents('carts.php',$id . ':' . $antistring . ':' . $price . ':' $accid . "\n",FILE_APPEND);
+			file_put_contents('carts.txt',$id . ':' . $antistring . ':' . $price . ':' $accid . "\n",FILE_APPEND);
+			return true;
 		}
 	}
 
