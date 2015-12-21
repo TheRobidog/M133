@@ -1,0 +1,21 @@
+account.txt
+ID:Username:Password:ProfileID:LanguageID
+bsp 1:hrobbel:hahhahah:1:1
+
+article.txt
+ID:Name:Beschreibung:KategorieID:Preis:ImageLink
+
+category.txt
+ID:Name
+
+cart.txt
+ID:AntiID1;AntiID2;AntiID3:Preis:AccountID
+
+order.txt
+ID:WarenkorbID:AccountID
+
+profile.txt
+ID:Name:Vorname:Email:Adresse:PLZ:Ort:Land(CH,DE,US,FR,RU,etc.)
+
+language.txt
+ID:Name
