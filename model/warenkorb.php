@@ -2,7 +2,7 @@
 
 	class Warenkorb{
 		private $id;
-		private $antiquitaet;
+		private $antiquitaet[];
 		private $price;
 		private $account;
 		
