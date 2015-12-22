@@ -26,6 +26,18 @@
 		public function getAccount(){
 			return $this->account;
 		}
+
+		public function setId($eid){
+			$this->id = $eid;
+		}
+
+		public function setWarenkorb($ewarenkorb){
+			$this->warenkorb = $ewarenkorb;
+		}
+
+		public function setAccount($eaccount){
+			$this->account = $eaccount;
+		}
 	}
 
 ?>

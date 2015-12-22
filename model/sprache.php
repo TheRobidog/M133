@@ -19,6 +19,14 @@
 		public function getName(){
 			return $this->name;
 		}
+
+		public function setId($eid){
+			$this->id = $eid;
+		}
+
+		public function setName($ename){
+			$this->name = $ename;
+		}
 	}
 
 ?>

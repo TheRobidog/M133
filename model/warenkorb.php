@@ -33,6 +33,21 @@
 			return $this->account;
 		}
 
+		public function setId($eid){
+			$this->id = $eid;
+		}
+
+		public function setAntiquitaet($eantiquitaet){
+			$this->antiquitaet[] = $eantiquitaet;
+		}
+
+		public function setPrice($eprice){
+			$this->price = $eprice;
+		}
+
+		public function setAccount($eaccount){
+			$this->account = $eaccount;
+		}
 	}
 
 ?>

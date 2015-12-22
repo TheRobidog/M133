@@ -13,12 +13,12 @@
 			foreach($allprofs as $oneprof){
 				$onearr = explode($oneprof);
 				if($id == $onearr['0']){
-					$prof->id = $onearr['0'];
-					$prof->name = $onearr['1'];
-					$prof->firstname = $onearr['2'];
-					$prof->address = $onearr['3'];
-					$prof->postalcode = $onearr['4'];
-					$prof->town = $onearr['5'];
+					$prof->setId($onearr['0']);
+					$prof->setName($onearr['1']);
+					$prof->setFirstname($onearr['2']);
+					$prof->setAddress($onearr['3']);
+					$prof->setPostalcode($onearr['4']);
+					$prof->setTown($onearr['5']);
 					return $prof;
 				}
 			}

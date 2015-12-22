@@ -61,6 +61,38 @@
 		public function getCountry(){
 			return $this->country;
 		}
+
+		public function setId($eid){
+			$this->id = $eid;
+		}
+
+		public function setName($ename){
+			$this->name = $ename;
+		}
+
+		public function setFirstname($efirstname){
+			$this->firstname = $efirstname;
+		}
+
+		public function setEmail($eemail){
+			$this->email = $eemail;
+		}
+
+		public function setAddress($eaddress){
+			$this->address = $eaddress;
+		}
+
+		public function setPostalCode($epostalcode){
+			$this->postalcode = $epostalcode;
+		}
+
+		public function setTown($etown){
+			$this->town = $etown;
+		}
+
+		public function setCountry($ecountry){
+			$this->country = $ecountry;
+		}
 	}
 
 

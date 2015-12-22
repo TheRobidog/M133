@@ -17,16 +17,16 @@
 			foreach($safedcarts as $safedcart){
 				$cartarray = explode(':',$safedcart);
 				if($id == $cartarray['0']){
-					$cart->id = $cartarray['0'];
+					$cart->setId($cartarray['0']);
 					$anti = new AntiquitaetController();
 					$antiarray = explode(';',$cartarray['1'])
 					foreach($antiarray as $antiid){
 						$newanti = $anti->ShowOne($antiid);
-						$cart->antiquitaet[] = $newanti;
+						$cart->setAntiquitaet($newanti);
 					}
-					$cart->price = $cartarray['2'];
+					$cart->setPrice($cartarray['2']);
 					$acc = new AccountController();
-					$cart->account = $acc->LoadAcc($cartarray['3']);
+					$cart->setAccount($acc->LoadAcc($cartarray['3']));
 					return $cart;
 				}
 			}

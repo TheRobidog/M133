@@ -17,13 +17,13 @@
 			foreach($allaccs as $allacc){
 				$accarr = explode(':',$allacc);
 				if($id == $accarr['0']){
-					$acc->id = $accarr['0'];
-					$acc->username = $accarr['1'];
-					$acc->password = $accarr['2'];
+					$acc->setId($accarr['0']);
+					$acc->setUsername($accarr['1']);
+					$acc->setPassword($accarr['2']);
 					$pro = new ProfilController();
-					$acc->profil = $pro->GetById($accarr['3']);
+					$acc->setProfil($pro->GetById($accarr['3']));
 					$lan = new SpracheController();
-					$acc->sprache = $lan->GetById($accarr['4']);
+					$acc->setSprache($lan->GetById($accarr['4']));
 					return $acc;
 				}
 			}
