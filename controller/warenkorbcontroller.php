@@ -1,7 +1,9 @@
 <?php
 	include_once('model/warenkorb.php');
 	include_once('controller/antiquitaetcontroller.php');
+	include_once('model/antiquitaet.php');
 	include_once('controller/accountcontroller.php');
+	include_once('model/account.php');
 
 	class WarenkorbController{
 		public function __construct(){
@@ -17,11 +19,6 @@
 				if($id == $cartarray['0']){
 					$cart->id = $cartarray['0'];
 					$anti = new AntiquitaetController();
-					/*foreach($cartarray['1'] as $antiid){
-						$newanti = $anti->ShowOne($antiid);
-						$cart->antiquitaet[] = $newanti;
-					}*/
-					// Needs to be rewritten - Not an Array
 					$antiarray = explode(';',$cartarray['1'])
 					foreach($antiarray as $antiid){
 						$newanti = $anti->ShowOne($antiid);
@@ -30,9 +27,10 @@
 					$cart->price = $cartarray['2'];
 					$acc = new AccountController();
 					$cart->account = $acc->LoadAcc($cartarray['3']);
+					return $cart;
 				}
 			}
-			return $cart;
+			return false;
 		}
 
 		public function SaveOne($anti,$price,$acc,$id=null){

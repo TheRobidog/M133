@@ -1,6 +1,7 @@
 <?php
 	include_once("model/antiquitaet.php");
-	include_once("controller/kategoriecontroller.php")
+	include_once("controller/kategoriecontroller.php");
+	include_once("model/kategorie.php")
 
 	class AntiquitaetController{
 		public function __construct(){
@@ -20,9 +21,10 @@
 					$catcontrol = new KategorieController();
 					$anti->kategorie = $catcontrol->GetById($artarray['3']);
 					$anti->price = $artarray['4'];
+					return $anti;
 				}
 			}
-			return $anti;
+			return false;
 		}
 
 		public function List($cat=null){

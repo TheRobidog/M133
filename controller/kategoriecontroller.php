@@ -15,9 +15,10 @@
 				if($id == $catdata['0']){
 					$cat->id = $catdata['0'];
 					$cat->name = $catdata['1'];
+					return $cat;
 				}
 			}
-			return $cat;
+			return false;
 		}
 	}
 
