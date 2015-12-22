@@ -18,7 +18,7 @@
 			$this->username = $username;
 			$this->password = $password;
 			$this->profil = $profil;
-			$this->spreache = $sprache;
+			$this->sprache = $sprache;
 		}
 
 		public function getId(){
@@ -39,6 +39,26 @@
 
 		public function getSprache(){
 			return $this->sprache;
+		}
+
+		public function setId($eid){
+			$this->id = $eid;
+		}
+
+		public function setUsername($eusername){
+			$this->username = $eusername;
+		}
+
+		public function setPassword($epassword){
+			$this->password = $epassword;
+		}
+
+		public function setProfil($eprofil){
+			$this->profil = $eprofil;
+		}
+
+		public function setSprache($esprache){
+			$this->sprache = $esprache;
 		}
 	}
 

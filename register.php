@@ -12,7 +12,7 @@
 		<?php
 			session_start();
 		?>
-		<form action="createacc.php" method="POST">
+		<form method="POST">
 			<label for="username">Username:</label>
 			<input type="text" name="username" id="username" required><br>
 			<label for="password">Password:</label>
@@ -118,11 +118,11 @@
 			<input type="submit" value="Register">
 		</form>
 		<?php
-			if(isset($_SESSION['name'])){
+			/*if(isset($_SESSION['name'])){
 				echo '<a href="index.php">To the shop</a>';
 			}else{
 				echo '<a href="login.php">Login</a>';
-			}
+			}*/
 		?>
 	</body>
 

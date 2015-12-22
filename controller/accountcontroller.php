@@ -13,7 +13,7 @@
 		public function LoadAcc($id){
 			$acc = new Account();
 
-			$allaccs = file('accounts.txt');
+			$allaccs = file('account.txt');
 			foreach($allaccs as $allacc){
 				$accarr = explode(':',$allacc);
 				if($id == $accarr['0']){
@@ -24,15 +24,15 @@
 					$acc->profil = $pro->GetById($accarr['3']);
 					$lan = new SpracheController();
 					$acc->sprache = $lan->GetById($accarr['4']);
-					return $acc
+					return $acc;
 				}
 			}
 			return false;
 		}
 
-		public function SaveAcc($username,$password,$profil,$sprache=null,$id=null){
+		public function SaveAcc($username,$password,$passwordrepeat,$profil,$sprache=null,$id=null){
 			if(!isset($id)){
-				$accs = file('accounts.txt');
+				$accs = file('account.txt');
 				$lastacc = end($accs);
 				$lastarr = explode($lastacc);
 				$id = $lastarr['0'] + 1;
@@ -43,12 +43,12 @@
 			}else{
 				$spracheid = 2;
 			}
-			file_put_contents('accounts.txt',$id . ':' . $username . ':' . $password . ':' $profilid . ':' . $spracheid . "\n",FILE_APPEND);
+			file_put_contents('accounts.txt',$id . ':' . $username . ':' . $password . ':' . $profilid . ':' . $spracheid . "\n",FILE_APPEND);
 			return true;
 		}
 
 		public function CheckLogin($username,$password){
-			$allaccs = file('accounts.txt');
+			$allaccs = file('account.txt');
 
 			foreach($allaccs as $oneacc){
 				$onearr = explode(':',$oneacc);

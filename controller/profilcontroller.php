@@ -3,7 +3,7 @@
 
 	class ProfilController{
 		public function __construct(){
-			echo "Profil Controller geladen"
+			echo "Profil Controller geladen";
 		}
 
 		public function LoadPro($id){
@@ -32,7 +32,7 @@
 				$lastarr = explode($lastprof);
 				$id = $lastarr['0'] + 1;
 			}
-			file_put_contents('profiles.txt',$id . ':' . $name . ':' . $firstname . ':' $email . ':' . $address . ':' . $postalcode . ':' . $town . "\n",FILE_APPEND);
+			file_put_contents('profiles.txt',$id . ':' . $name . ':' . $firstname . ':' . $email . ':' . $address . ':' . $postalcode . ':' . $town . "\n",FILE_APPEND);
 			return true;
 		}
 	}

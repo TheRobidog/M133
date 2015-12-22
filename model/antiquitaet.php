@@ -1,6 +1,6 @@
 <?php
 
-	class Antiquitaet(){
+	class Antiquitaet{
 		private $id;
 		private $name;
 		private $description;
@@ -46,6 +46,30 @@
 
 		public function getImage(){
 			return $this->image;
+		}
+
+		public function setId($eid){
+			$this->id = $eid;
+		}
+
+		public function setName($ename){
+			$this->name = $ename;
+		}
+
+		public function setDescription($edescription){
+			$this->description = $edescription;
+		}
+
+		public function setKategorie($ekategorie){
+			$this->kategorie = $ekategorie;
+		}
+
+		public function setPrice($eprice){
+			$this->price = $eprice;
+		}
+
+		public function setImage($eimage){
+			$this->image = $eimage;
 		}
 	}
 

@@ -9,12 +9,12 @@
 		public function GetById($id){
 			$cat = new Kategorie();
 
-			$catsdata = file('categories.txt');
+			$catsdata = file('storage/category.txt');
 			foreach($catsdata as $catdata){
 				$catarray = explode(':',$catdata);
 				if($id == $catdata['0']){
-					$cat->id = $catdata['0'];
-					$cat->name = $catdata['1'];
+					$cat->setId($catdata['0']);
+					$cat->setName($catdata['1']);
 					return $cat;
 				}
 			}
