@@ -19,7 +19,7 @@
 				if($id == $cartarray['0']){
 					$cart->setId($cartarray['0']);
 					$anti = new AntiquitaetController();
-					$antiarray = explode(';',$cartarray['1'])
+					$antiarray = explode(';',$cartarray['1']);
 					foreach($antiarray as $antiid){
 						$newanti = $anti->ShowOne($antiid);
 						$cart->setAntiquitaet($newanti);
@@ -37,7 +37,7 @@
 			if(!isset($id)){
 				$safedcarts = file('carts.php');
 				$lastentry = end($safedcarts);
-				$lastarray = explode(':',$lastentry)
+				$lastarray = explode(':',$lastentry);
 				$id = $lastarray['0'] + 1;
 			}
 			$antistring;
@@ -49,9 +49,32 @@
 					$antistring = $antistring . ';' . $newid;
 				}
 			}
-			$accid = $acc->id
-			file_put_contents('carts.txt',$id . ':' . $antistring . ':' . $price . ':' $accid . "\n",FILE_APPEND);
+			$accid = $acc->id;
+			file_put_contents('carts.txt',$id . ':' . $antistring . ':' . $price . ':' . $accid . "\n",FILE_APPEND);
 			return true;
+		}
+
+		public function GetByAccount($account){
+			$cart = new Warenkorb();
+
+			$safedcarts = file('carts.php');
+			foreach($safedcarts as $safedcart){
+				$cartarray = explode(':',$safedcart);
+				if($account->getId() == $cartarray['3']){
+					$cart->setId($cartarray['0']);
+					$anti = new AntiquitaetController();
+					$antiarray = explode(';',$cartarray['1'])
+					foreach($antiarray as $antiid){
+						$newanti = $anti->ShowOne($antiid);
+						$cart->setAntiquitaet($newanti);
+					}
+					$cart->setPrice($cartarray['2']);
+					$acc = new AccountController();
+					$cart->setAccount($acc->LoadAcc($cartarray['3']));
+					return $cart;
+				}
+			}
+			return false;
 		}
 	}
 

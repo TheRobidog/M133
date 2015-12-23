@@ -1,19 +1,19 @@
 <?php
 	include_once 'model/account.php';
-	include_once 'controller/profilcontrollor.php';
+	include_once 'controller/profilcontroller.php';
 	include_once 'model/profil.php';
 	include_once 'controller/sprachecontroller.php';
 	include_once 'model/sprache.php';
 
 	class AccountController{
 		public function __construct(){
-			echo "Account Controller aufgerufen!";
+			//echo "Account Controller aufgerufen!";
 		}
 
 		public function LoadAcc($id){
 			$acc = new Account();
 
-			$allaccs = file('account.txt');
+			$allaccs = file('storage/account.txt');
 			foreach($allaccs as $allacc){
 				$accarr = explode(':',$allacc);
 				if($id == $accarr['0']){
@@ -30,9 +30,9 @@
 			return false;
 		}
 
-		public function SaveAcc($username,$password,$passwordrepeat,$profil,$sprache=null,$id=null){
+		public function SaveAcc($username,$password,$profil,$sprache=null,$id=null){
 			if(!isset($id)){
-				$accs = file('account.txt');
+				$accs = file('storage/account.txt');
 				$lastacc = end($accs);
 				$lastarr = explode($lastacc);
 				$id = $lastarr['0'] + 1;
@@ -48,7 +48,7 @@
 		}
 
 		public function CheckLogin($username,$password){
-			$allaccs = file('account.txt');
+			$allaccs = file('storage/account.txt');
 
 			foreach($allaccs as $oneacc){
 				$onearr = explode(':',$oneacc);

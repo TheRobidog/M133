@@ -24,7 +24,7 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <a href="index.php">
                         Home
                     </a>
                 </li>
@@ -32,19 +32,21 @@
                     <a href="login.php">Login</a>
                 </li>
                 <li>
+                    <a href="register.php">Registrieren</a>
+                </li>
+                <li>
                     <a href="cart.php">Warenkorb</a>
                 </li>
                 <li>
-                    <a href="artikelliste.php">Artikel</a>
+                    <a href="article.php">Artikel</a>
                 </li>
-                <li>		
-				<li>Kategorie &raquo; 
-	                    <ul>
-	                        <li><a href="artikelliste.php?cat=1">Alte Waffen</a></li>
-	                        <li><a href="artikelliste.php?cat=2">Alter Schmuck</a></li>
-	                        <li><a href="artikelliste.php?cat=3">Alte M&ouml;bel</a></li>
-	                    </ul>                    
-	                </li>					
+                <li>
+                    Kategorie &raquo;
+                    <ul>
+                        <li><a href="articles.php?cat=1">Alte Waffen</a></li>
+                        <li><a href="articles.php?cat=2">Alter Schmuck</a></li>
+                        <li><a href="articles.php?cat=3">Alte M&ouml;bel</a></li>
+                    </ul>                       
                 </li>
             </ul>
         </div>
@@ -59,12 +61,12 @@
 
 			$Controller = new AntiquitaetController();
 			if(isset($_GET['cat'])){
-				$list = $Controller->List($_GET['cat']);
+				$list = $Controller->Liste($_GET['cat']);
 			}else{
-				$list = $Controller->List();
+				$list = $Controller->Liste();
 			}
 
-			$starter = '<tr class="article"><td><img class="smallpreview" src="images/';
+			$starter = '<tr class="article"><td><img class="smallpreview" width="200" height="200" alt="Artikelbild" src="';
 			$middle = '" alt="Artikelbild"></td><td>';
 			$end = '</td></tr>';
 

@@ -19,7 +19,7 @@
 
 <body>
 
-	<div id="test"><h1>Robmielis Antiquit&auml;ten Inc.</h1></div>
+	<div id="test"><h1>Robmielis Antiquit&auml;ten Incorporation Login</h1></div>
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -64,37 +64,39 @@
 		<!-- <section> -->
         <div id="page-content-wrapper">
 		
-			<table>
-  <tr>
-    <th><h1>Simple Sidebar</h1></th>
-	<th></th>
-  </tr>
-  <tr>
-    <td rowspan="3" valign="top"><p>On small screens, the page content will be pushed off canvasdfadfdfs.</p>
-                        <p>Make sure to keep all page content within theöaksdjfölksdjfaösldkfja</p>
-						<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy<br>
-						eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.<br>
-						At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,<br>
-						no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,<br>
-						consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et<br>
-						dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo<br>
-						dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem<br> 
-						ipsum dolor sit amet.</p></td>
-						
-	<!--			<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>		-->
-						
-    <td><img id="preview" src="säbel.jpg" width="200" height="200" alt="Bambus in den Wolken"><br>
-	Antike Waffen aus Alten Zeiten</td>
-  </tr>
-  <tr>
-    <td><img id="preview" src="schmuck.jpg" width="200" height="200" alt="Bambus in den Wolken"><br>
-	Alter Schmuck und antike Reliquien</td>
-  </tr>
-  <tr>
-	<td><img id="preview" src="schrank.jpg" width="200" height="200" alt="Bambus in den Wolken"><br>
-	Alte M&ouml;bel</td>
-  </tr>
-</table>
+			<!-- HIE CHUNTS DS VERDAMMTE LOGIN INDE WUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU -->
+
+		<?php
+            session_start();
+			include_once('controller/warenkorbcontroller.php');
+			include_once('model/warenkorb.php');
+			include_once('controller/antiquitaetcontroller.php');
+			include_once('model/antiquitaet.php');
+			include_once('controller/accountcontroller.php');
+			include_once('model/account.php');
+
+			$accocont = new AccountController();
+			$acco = $accocont->LoadAcc($_SESSION['id']);
+
+			$cartcont = new WarenkorbController();
+			$cart = $cartcont->GetByAccount($acco);
+
+			echo $cart->getPrice();
+			echo '<table>';
+
+			foreach($cart->getAntiquitaet() as $anti){
+				$starter = '<tr class="article"><td><img class="smallpreview" width="200" height="200" alt="Artikelbild" src="';
+				$middle = '" alt="Artikelbild"></td><td>';
+				$end = '</td></tr>';
+
+				foreach($list as $element){
+				echo $starter . $anti->getImage() . $middle . $anti->getName() . ': ' . $anti->getDescription() . '<br>' . $anti->getPrice() . $end;
+                }
+            }
+
+            exit;
+		?>
+
         </div>
 		
 		

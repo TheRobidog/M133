@@ -2,7 +2,7 @@
 
 	class Warenkorb{
 		private $id;
-		private $antiquitaet[];
+		private $antiquitaet;
 		private $price;
 		private $account;
 		
@@ -16,6 +16,7 @@
 			$this->antiquitaet = $antiquitaet;
 			$this->price = $price;
 			$this->account = $account;
+		}
 
 		public function getId(){
 			return $this->id;
